@@ -1096,6 +1096,11 @@
   resolved "https://registry.npmjs.org/@sinclair/typebox/-/typebox-0.27.8.tgz"
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
+"@stripe/stripe-js@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/@stripe/stripe-js/-/stripe-js-4.0.0.tgz"
+  integrity sha512-R5zewuzTVPGn4dXkavbgDk8vSILkT5hRlzga10p6JzngR17qKi1fgc27kl58TmaVvgBZGngTRNH2j9kYdvfPGA==
+
 "@trysound/sax@0.2.0":
   version "0.2.0"
   resolved "https://registry.npmjs.org/@trysound/sax/-/sax-0.2.0.tgz"
