@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :products
   resources :users
   get '/shop', to: "shop#index"
   get '/home', to: "home#index"
