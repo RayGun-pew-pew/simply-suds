@@ -6,7 +6,7 @@ export default function ProductCard({product}) {
     const [showCardModal, setShowCardModal] = useState(false);
 
     if(showCardModal){
-	<>
+	<div>
 	    <div className="darkBG" 
 		 onClick={() => setShowCardModal(!showCardModal)}/>
             <article className="centered modal">
@@ -56,7 +56,7 @@ export default function ProductCard({product}) {
                     </form>
                 </div>
             </article>
-        </>
+        </div>
     }
 
     if (product["images"].length > 0){

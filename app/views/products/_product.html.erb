@@ -1,42 +1,17 @@
-<div id="<%= dom_id product %>">
-  <p>
-    <strong>Name:</strong>
+<tr id="<%=dom_id product %>">
+  <td>
     <%= product.name %>
-  </p>
-
-  <p>
-    <strong>Sku:</strong>
+  </td>
+  <td>
     <%= product.sku %>
-  </p>
-
-  <p>
-    <strong>Price:</strong>
+  </td>
+  <td>
     <%= product.price %>
-  </p>
-  
-  <p>
-    <strong>Is active:</strong>
+  </td>
+  <td>
     <%= product.is_active %>
-  </p>
-
-  <p>
-    <strong>Size:</strong>
-    <%= product.size %>
-  </p>
-
-  <p>
-    <strong>Size measurment:</strong>
-    <%= product.size_measurment %>
-  </p>
-
-  <p>
-    <strong>Stock:</strong>
-    <%= product.stock %>
-  </p>
-
-  <p>
-    <strong>On sale:</strong>
-    <%= product.on_sale %>
-  </p>
-
-</div>
+  </td>
+  <td>
+    <%= link_to "View", product %>
+  </td>
+</tr>
