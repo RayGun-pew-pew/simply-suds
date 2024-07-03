@@ -3,7 +3,6 @@ FactoryBot.define do
     name { "MyString" }
     sku { "MyString" }
     price { 1 }
-    user_id { nil }
     is_active { false }
     size { 1 }
     size_measurment { "MyString" }

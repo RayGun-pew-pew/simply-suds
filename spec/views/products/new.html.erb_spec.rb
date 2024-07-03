@@ -6,7 +6,6 @@ RSpec.describe "products/new", type: :view do
       name: "MyString",
       sku: "MyString",
       price: 1,
-      user_id: nil,
       is_active: false,
       size: 1,
       size_measurment: "MyString",
@@ -25,8 +24,6 @@ RSpec.describe "products/new", type: :view do
       assert_select "input[name=?]", "product[sku]"
 
       assert_select "input[name=?]", "product[price]"
-
-      assert_select "input[name=?]", "product[user_id_id]"
 
       assert_select "input[name=?]", "product[is_active]"
 

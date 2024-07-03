@@ -4,7 +4,6 @@ class CreateProducts < ActiveRecord::Migration[7.1]
       t.string :name, null: false
       t.string :sku
       t.integer :price, null: false
-      t.references :user_id, belongs_to: true, null: false, foreign_key: true
       t.boolean :is_active, default: false, null: false
       t.integer :size
       t.string :size_measurment
