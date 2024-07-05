@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :product_catagories
+  resources :products
   resources :catagories
   get 'product_catagory/index'
   get 'product_catagory/new'
@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'product_catagory/update'
   get 'product_catagory/delete'
   get 'product_catagory/destroy'
-  resources :products
   resources :users
   get '/shop', to: "shop#index"
   get '/home', to: "home#index"

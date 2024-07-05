@@ -1,12 +1,14 @@
 FactoryBot.define do
   factory :product do
     name { "MyString" }
-    sku { "MyString" }
+    description { "MyText" }
     price { 1 }
-    is_active { false }
+    stock { 1 }
     size { 1 }
     size_measurment { "MyString" }
-    stock { 1 }
+    sku { "MyString" }
+    is_active { false }
     on_sale { false }
+    catagory { nil }
   end
 end

@@ -4,13 +4,15 @@ RSpec.describe "products/new", type: :view do
   before(:each) do
     assign(:product, Product.new(
       name: "MyString",
-      sku: "MyString",
+      description: "MyText",
       price: 1,
-      is_active: false,
+      stock: 1,
       size: 1,
       size_measurment: "MyString",
-      stock: 1,
-      on_sale: false
+      sku: "MyString",
+      is_active: false,
+      on_sale: false,
+      catagory: nil
     ))
   end
 
@@ -21,19 +23,23 @@ RSpec.describe "products/new", type: :view do
 
       assert_select "input[name=?]", "product[name]"
 
-      assert_select "input[name=?]", "product[sku]"
+      assert_select "textarea[name=?]", "product[description]"
 
       assert_select "input[name=?]", "product[price]"
 
-      assert_select "input[name=?]", "product[is_active]"
+      assert_select "input[name=?]", "product[stock]"
 
       assert_select "input[name=?]", "product[size]"
 
       assert_select "input[name=?]", "product[size_measurment]"
 
-      assert_select "input[name=?]", "product[stock]"
+      assert_select "input[name=?]", "product[sku]"
+
+      assert_select "input[name=?]", "product[is_active]"
 
       assert_select "input[name=?]", "product[on_sale]"
+
+      assert_select "input[name=?]", "product[catagory_id]"
     end
   end
 end

@@ -17,8 +17,8 @@
   </div>
 
   <div>
-    <%= form.label :sku, style: "display: block" %>
-    <%= form.text_field :sku %>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
   </div>
 
   <div>
@@ -27,8 +27,8 @@
   </div>
 
   <div>
-    <%= form.label :is_active, style: "display: block" %>
-    <%= form.check_box :is_active %>
+    <%= form.label :stock, style: "display: block" %>
+    <%= form.number_field :stock %>
   </div>
 
   <div>
@@ -42,8 +42,13 @@
   </div>
 
   <div>
-    <%= form.label :stock, style: "display: block" %>
-    <%= form.number_field :stock %>
+    <%= form.label :sku, style: "display: block" %>
+    <%= form.text_field :sku %>
+  </div>
+
+  <div>
+    <%= form.label :is_active, style: "display: block" %>
+    <%= form.check_box :is_active %>
   </div>
 
   <div>
@@ -52,7 +57,11 @@
   </div>
 
   <div>
+    <%= form.label :catagory_id, style: "display: block" %>
+    <%= form.select :catagory_id, Catagory.all.collect {|cata| [cata.name, cata.id]} %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
-
