@@ -1,0 +1,4 @@
+<img src="" alt=""
+     height="250px" width="250px">
+<%= link_to "" product %>
+</img>

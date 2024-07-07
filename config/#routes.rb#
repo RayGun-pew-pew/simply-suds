@@ -4,13 +4,6 @@ Rails.application.routes.draw do
   resources :shoppers
   resources :products
   resources :catagories
-  get 'product_catagory/index'
-  get 'product_catagory/new'
-  get 'product_catagory/create'
-  get 'product_catagory/show'
-  get 'product_catagory/update'
-  get 'product_catagory/delete'
-  get 'product_catagory/destroy'
   resources :users
   get '/shop', to: "shop#index"
   get '/home', to: "home#index"
