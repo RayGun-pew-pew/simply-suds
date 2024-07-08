@@ -4,19 +4,36 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     @products = Product.all
+    if session[:user_id]
+      render "dashboard/index"
+    else
+      render "shop/index"
+    end
   end
 
   # GET /products/1 or /products/1.json
   def show
+    if session[:user_id]
+      render "products/show"
+    else
+      render "shop/show"
+    end
   end
 
   # GET /products/new
   def new
-    @product = Product.new
+    if session[:user_id]
+      @product = Product.new
+    end
   end
 
   # GET /products/1/edit
   def edit
+    if session[:user_id]
+      render "products/edit"
+    else
+      render "shop/show"
+    end
   end
 
   # POST /products or /products.json

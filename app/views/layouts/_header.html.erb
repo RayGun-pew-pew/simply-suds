@@ -1,4 +1,8 @@
-      <header>
+<% if Order.find_by(shopper_id: session[:shopper_id]) %>
+<% @order = Order.find_by(shopper_id: session[:shopper_id]) %>
+<% end %>
+
+<header>
             <div class='header-container branding-container' id='branding-container-logo'>
                 <a href="/">
                     <img src="transparent-logo.svg" alt="simply suds and more logo" 
@@ -28,6 +32,7 @@
                 </div>
             </nav>
             <div class="header-container" id='cart-container'>
+	      <%= link_to image_tag(""),  @order %>
             <img src="cart.svg" alt="show or hide cart button"  
                 height="50px" width="50px" />
             </div>           
