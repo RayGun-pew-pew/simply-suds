@@ -8,24 +8,24 @@ class HomeController < ApplicationController
   private
 
   def set_shopper
-    if session[:shopper_id] && Shopper.find(session[:shopper_id])
-      @shopper = Shopper.find(session[:shopper_id])
+    if cookies[:shopper_id] && Shopper.find(cookies[:shopper_id])
+      @shopper = Shopper.find(cookies[:shopper_id])
     else
       @shopper = Shopper.new()
       if @shopper.save()
-        session[:shopper_id] = @shopper.id
+        cookies[:shopper_id] = @shopper.id
       end
-    end
+    end  
   end
 
   def set_order
-    if session[:order_id]
-      @order = Order.find(session[:order_id])
+    if cookies[:order_id]
+      @order = Order.find(cookies[:order_id])
     else
-      if Order.where(shopper_id: session[:shopper_id],  purchased: false).empty?
-        @order = Order.new(shopper_id: session[:shopper_id])
+      if Order.where(shopper_id: cookies[:shopper_id], purchased: false).empty?
+        @order = Order.new(shopper_id: cookies[:shopper_id])
         if @order.save()
-          session[:order_id] = @order.save
+          cookies[:order_id] = @order.id
         end
       end
     end

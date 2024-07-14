@@ -8,6 +8,11 @@ class OrdersController < ApplicationController
 
   # GET /orders/1 or /orders/1.json
   def show
+    if session[:user_id]
+    else
+      @order = Order.find(cookies[:order_id])
+      render "orders/cart"
+    end
   end
 
   # GET /orders/new
