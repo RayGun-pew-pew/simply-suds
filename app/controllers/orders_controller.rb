@@ -24,23 +24,13 @@ class OrdersController < ApplicationController
   def edit
   end
 
-  # POST /orders or /orders.json
-  def create
-    @order = Order.new(order_params)
-
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
+    if @order.client_secret == nil
+      create_payment_intent()
+      @order.client_secret create_payment_intent()
+    end
+    
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
@@ -61,7 +51,7 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_order
@@ -70,6 +60,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:shopper_id, :purchased, :shipped, :date_shipped)
+      params.require(:order).permit(:shopper_id, :purchased, :shipped, :date_shipped, :client_secret)
     end
 end
