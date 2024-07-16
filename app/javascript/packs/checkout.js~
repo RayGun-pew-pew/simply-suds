@@ -1,0 +1,1 @@
+const stripe = Stripe("pk_test_51PR2wqK5wu4lBGD1pl8py2ku27EN68E4py235ToZimQnSRfFFXzZZFP6wPfNuoui9Eve3dEGvDXmu9Your6qgENq00y3x9YC1l")

@@ -38,6 +38,7 @@ class LineItemsController < ApplicationController
               order.client_secret = payment_intent["client_secret"]
               order.payment_intent_id = payment_intent["id"]
               order.save()
+              cookies[:client_secret] = order.client_secret
             else
               updated_intent = Stripe::PaymentIntent.update(
                 order.payment_intent_id,
