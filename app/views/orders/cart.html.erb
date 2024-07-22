@@ -1,10 +1,11 @@
-<%= javascript_pack_tag "checkout" %>
-
+<% javascript_pack_tag "checkout" %>
 <% @order.line_items.each do |line_item| %>
 <%= render "orders/line_item", line_item: line_item %>
 <% end %>
-<form id="payment_form">
-  <div id="payment_element">
+
+<%= link_to "Checkout", edit_order_path %>
+<form id="payment-form">
+  <div id="payment-element">
     <!--Stripe.js injects the Payment Element-->
   </div>
   <button id="submit">
@@ -13,4 +14,3 @@
   </button>
   <div id="payment-message" class="hidden"></div>
 </form>
-

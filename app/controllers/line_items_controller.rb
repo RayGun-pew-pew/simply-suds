@@ -24,9 +24,9 @@ class LineItemsController < ApplicationController
   # POST /line_items or /line_items.json
   def create
     order = Order.find(cookies[:order_id])
-    @line_item = LineItem.new({product_id: params[:product_id],
+    @line_item = LineItem.new({product_id: params[:line_item][:product_id],
                                order_id: order.id,
-                               quantity: params[:quantity]})
+                               quantity: params[:line_item][:quantity]})
 
     respond_to do |format|
       if @line_item.save

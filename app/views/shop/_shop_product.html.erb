@@ -1,3 +1,6 @@
 <h1><%= @product.name %></h1>
-<%= button_to "Add to cart", line_items_path(product_id: @product, quantity: 5) %>
-    
+<%= form_with model: LineItem.create do |form| %>
+<%= form.hidden_field :product_id, value: @product.id %>
+<%= form.number_field :quantity, in: 1...100 %>
+<%= form.submit "Add to cart" %>
+<% end %>    

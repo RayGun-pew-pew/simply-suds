@@ -1,6 +1,4 @@
-<% javascript_pack_tag "checkout" %>
-
-<%= form_for @order do |form| %>
+<%= form_with(model: order) do |form| %>
 <div>
   <%= form.label :first_name %>
   <%= form.text_field :first_name %>
@@ -11,7 +9,7 @@
 </div>
 <div>
   <%= form.label :address_line_1 %>
-  <%= form.text_field :address_line_1 %>
+  <%= from.text_field :address_line_1 %>
 </div>
 <div>
   <%= form.label :address_line_2 %>
@@ -23,17 +21,16 @@
 </div>
 <div>
   <%= form.label :state %>
-  <%= form.text_field :state %>
+  <%= form.text_field %>
 </div>
 <div>
   <%= form.label :zipcode %>
-  <%= form.text_field :zipcode %>
+  <%= form.text_field :zipcode %  >
 <div>
   <%= form.label :email_address %>
   <%= form.text_field :email_address %>
 </div>
 <div>
-  <%= form.submit %>
+  <%= form.subit %>
 </div>
 <% end %>
-

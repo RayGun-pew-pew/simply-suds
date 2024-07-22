@@ -53,7 +53,6 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    @order.save
   end
   
   private

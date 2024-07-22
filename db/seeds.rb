@@ -7,7 +7,7 @@ end
 (1..20).each do
   Product.create!(
     name: Faker::Name.name,
-    price: Faker::Number.between(from: 1, to: 100),
+    price: Faker::Number.between(from: 100, to: 10000000),
     is_active: false,
     size: Faker::Number.between(from: 1, to: 10),
     size_measurment: "Oz",
