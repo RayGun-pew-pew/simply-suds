@@ -1,3 +1,5 @@
+<% javascript_pack_tag "checkout" %>
+
 <%= form_with(model: order) do |form| %>
 <div>
   <%= form.label :first_name %>
@@ -34,3 +36,13 @@
   <%= form.subit %>
 </div>
 <% end %>
+    <form id="payment_form">
+      <div id="payment_element">
+        <!--Stripe.js injects the Payment Element-->
+      </div>
+      <button id="submit">
+        <div class="spinner hidden" id="spinner"></div>
+        <span id="button-text">Pay now</span>
+      </button>
+      <div id="payment-message" class="hidden"></div>
+    </form>

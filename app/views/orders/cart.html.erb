@@ -1,4 +1,3 @@
-<% javascript_pack_tag "checkout" %>
 <% @order.line_items.each do |line_item| %>
 <%= render "orders/line_item", line_item: line_item %>
 <% end %>
