@@ -30,16 +30,8 @@ class OrdersController < ApplicationController
       create_payment_intent()
       @order.client_secret create_payment_intent()
     end
-    
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
-        format.json { render :show, status: :ok, location: @order }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
+
+    render "orders/payment"
   end
 
   # DELETE /orders/1 or /orders/1.json
@@ -53,7 +45,6 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    @order.save
   end
   
   private
