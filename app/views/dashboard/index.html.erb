@@ -1,3 +1,11 @@
 <% if Current.user %>
 Logged in as: <%= Current.user.email_address %>
 <% end %>
+
+<div>
+  <% @orders.each do |order| %>
+  <%= order.id %>
+  <% end %>
+  <% @products.each do |product| %>
+  <%= product.name %>
+  <% end %>
