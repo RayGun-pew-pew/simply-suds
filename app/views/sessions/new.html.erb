@@ -1,0 +1,11 @@
+<%= form_with url: sign_in_path do |form| %>
+<div>
+  <%= form.label :email_address %>
+  <%= form.text_field :email_address, placeholder: "my@email.com" %>
+</div>
+<div>
+  <%= form.label :password %>
+  <%= form.password_field :password, placeholder: "password" %>
+</div>
+<%= form.submit "log in" %>
+<% end %>

@@ -36,13 +36,12 @@ gem "shakapacker", "= 8.0"
 
 gem "react-rails", "= 3.2"
 
-gem "devise", "~> 4.9"
-
 gem "stripe", "~> 12.0"
 
-gem "easypost", "~> 6.2"
-
 gem "jquery-rails"
+
+gem "bcrypt"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
