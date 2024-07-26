@@ -3,9 +3,13 @@ Logged in as: <%= Current.user.email_address %>
 <% end %>
 
 <div>
-  <% @orders.each do |order| %>
-  <%= order.id %>
-  <% end %>
   <% @products.each do |product| %>
   <%= product.name %>
+  <%= link_to "View Product", product_path(product.id) %>
+  <%= link_to "Edit Product", edit_product_path(product.id) %>
   <% end %>
+</div>
+<div>
+  <%= link_to "Add Product", new_product_path %>
+  <%= link_to "Add Catagory", new_catagory_path %>
+</div>
