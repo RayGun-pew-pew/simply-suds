@@ -1,2 +1,5 @@
-
-<%= link_to image_tag("", height: "100", width: "100"), product %>
+<% if product.product_image.present? %>
+<%= link_to image_tag(product.product_image, size: "200x200"), product %>
+<% else %>
+<%= link_to image_tag("", size: "200x200"), product %>
+<% end %>
