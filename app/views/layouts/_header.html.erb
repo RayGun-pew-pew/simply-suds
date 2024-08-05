@@ -1,7 +1,3 @@
-<% if Order.find_by(shopper_id: cookies[:shopper_id]) %>
-<% @order = Order.find_by(shopper_id: cookies[:shopper_id]) %>
-<% end %>
-
 <header>
             <div class='header-container branding-container' id='branding-container-logo'>
                 <a href="/">
@@ -31,5 +27,5 @@
                   </a>
                 </div>
             </nav>
-            <%= link_to "View Cart", order_path(@order) %>
+	    <%= link_to "view cart", cart_path %>
         </header>

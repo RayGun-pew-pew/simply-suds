@@ -23,29 +23,33 @@ class LineItemsController < ApplicationController
 
   # POST /line_items or /line_items.json
   def create
-    order = Order.find(cookies[:order_id])
-    @line_item = LineItem.new({product_id: params[:line_item][:product_id],
-                               order_id: order.id,
-                               quantity: params[:line_item][:quantity]})
+    if LineItem.find_by(order_id: Current.order.id, product_id: params[:line_item][:product_id])
+      @line_item = LineItem.find_by(order_id: Current.order.id, product_id: params[:line_item][:product_id])
+      @line_item.update(quantity: params[:line_item][:quantity])
+    else
+      @line_item = LineItem.new({product_id: params[:line_item][:product_id],
+                                 order_id: Current.order.id,
+                                 quantity: params[:line_item][:quantity]})
+    end
 
     respond_to do |format|
       if @line_item.save
-            if order.client_secret == nil
+            if Current.order.client_secret == nil
               payment_intent = Stripe::PaymentIntent.create(
-                amount: order.products.pluck(:price).sum,
+                amount: Current.order.products.pluck(:price).sum,
                 currency: 'usd'
               )
-              order.client_secret = payment_intent["client_secret"]
-              order.payment_intent_id = payment_intent["id"]
-              order.save()
-              cookies[:client_secret] = order.client_secret
+              Current.order.client_secret = payment_intent["client_secret"]
+              Current.order.payment_intent_id = payment_intent["id"]
+              Current.order.save()
+              cookies[:client_secret] = Current.order.client_secret
             else
               updated_intent = Stripe::PaymentIntent.update(
-                order.payment_intent_id,
-                amount: order.products.pluck(:price).sum
+                Current.order.payment_intent_id,
+                amount: Current.order.products.pluck(:price).sum
               )
             end
-        format.html { redirect_to order_url(order.id), notice: "Line item was successfully created." }
+        format.html { redirect_to order_url(Current.order.id), notice: "Line item was successfully created." }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new, status: :unprocessable_entity }

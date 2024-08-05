@@ -1,0 +1,34 @@
+<nav>
+  <a href="#soap">
+    Soap
+  </a>
+  <a href="">
+    Bath Bombs
+  </a>
+  <a href="#lotion">
+    Lotion
+  </a>
+  <a href="#lip_balm">
+    Lip Balm
+  </a>
+</nav>
+<div id="products">
+  <div id="soap">
+    <h4>Soap</h4>
+    <% @products.each do |product| %>
+      <%= render "card", product: product %>
+    <% end %>
+  </div>
+  <div id="lip_balm">
+    <h4>Lip Balm</h4>
+    <% @products.each do |product| %>
+    <%= render "card", product: product %>
+    <% end %>
+  </div>
+  <div id="lotion">
+    <h4>Lotion</h4>
+    <% @products.each do |product| %>
+      <%= render "card", product: product %>
+    <% end %>
+  </div>
+</div>

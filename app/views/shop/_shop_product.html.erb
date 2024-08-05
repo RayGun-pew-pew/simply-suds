@@ -1,6 +1,21 @@
 <h1><%= @product.name %></h1>
+<div>
+  <h3>$<%= @product.price / 100.0 %></h3>
+</div>
+<div>
+  <%= @product.description %>
+</div>
+<div>
+    <% if product.product_image.present? %>
+  <%= link_to image_tag(product.product_image, size: "200x200"), product %>
+  <% else %>
+  <%= link_to image_tag("", size: "200x200"), product %>
+  <% end %>
+</div>
+<div>
 <%= form_with model: LineItem.create do |form| %>
 <%= form.hidden_field :product_id, value: @product.id %>
 <%= form.number_field :quantity, in: 1...100 %>
 <%= form.submit "Add to cart" %>
 <% end %>    
+</div>

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy checkout ]
-
+  Stripe.api_key = 'sk_test_51PR2wqK5wu4lBGD1J8Km9Wklgkm8qGVHD1gc21tv8q1K5ursbin5dlpVzimFuLsNWAr938lmkaKLVwcimgq3tvFZ00r4BkTfp1'
+  
   # GET /orders or /orders.json
   def index
     @orders = Order.all
@@ -8,10 +9,10 @@ class OrdersController < ApplicationController
 
   # GET /orders/1 or /orders/1.json
   def show
-    if session[:user_id]
+    if Current.user
+      @order = params[:id]
     else
-      @order = Order.find(cookies[:order_id])
-      render "orders/cart"
+      render "cart"
     end
   end
 
@@ -27,10 +28,12 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
     if @order.client_secret == nil
-      create_payment_intent()
-      @order.client_secret create_payment_intent()
-    end
-
+      payment_intent = Stripe::PaymentIntent.create(
+        amount: 100,
+        currency: 'usd')
+      @order.client_secret = payment_intent.client_secret
+      cookies[:client_secret] = @order.client_secret
+      end
     render "orders/payment"
   end
 
@@ -50,7 +53,7 @@ class OrdersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_order
-    @order = Order.find(params[:id])
+    @order = Order.find_by(id: params[:id])
   end
 
     # Only allow a list of trusted parameters through.

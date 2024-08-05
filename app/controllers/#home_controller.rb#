@@ -1,0 +1,20 @@
+class HomeController < ApplicationController
+  before_action :set_shopper
+  before_action :set_order
+  
+  def index
+  end
+
+  private
+
+  def set_shopper
+    if cookies[:shopper_id] && Shopper.find(cookies[:shopper_id])
+      @shopper = Shopper.find(cookies[:shopper_id])
+    else
+      @shopper = Shopper.new()
+      if @shopper.save()
+        cookies[:shopper_id] = @shopper.id
+      end
+    end  
+  end
+end

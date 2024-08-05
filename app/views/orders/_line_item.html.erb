@@ -1,7 +1,6 @@
 <li>
-  <%= line_item.quantity %> &times
   <%= line_item.product.name %>
-  <%= line_item.product.price * line_item.quantity %>
+  $<%= line_item.product.price / 100.0 * line_item.quantity %>
   <%= form_with model: line_item, method: :delete do |form| %>
   <%= form.submit "Remove From Cart" %>
   <% end %>

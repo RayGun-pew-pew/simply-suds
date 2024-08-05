@@ -1,38 +1,37 @@
-<%= javascript_pack_tag "checkout" %>
-
 <%= form_for @order do |form| %>
-<div>
+<div class="form-block">
   <%= form.label :first_name %>
   <%= form.text_field :first_name %>
 </div>
-<div>
+<div class="form-block">
   <%= form.label :last_name %>
   <%= form.text_field :last_name %>
 </div>
-<div>
+<div class="form-block">
   <%= form.label :address_line_1 %>
   <%= form.text_field :address_line_1 %>
 </div>
-<div>
+<div class="form-block">
   <%= form.label :address_line_2 %>
   <%= form.text_field :address_line_2 %>
 </div>
-<div>
+<div class="form-block">
   <%= form.label :city %>
   <%= form.text_field :city %>
 </div>
-<div>
+<div class="form-block">
   <%= form.label :state %>
   <%= form.text_field :state %>
 </div>
-<div>
+<div class="form-block">
   <%= form.label :zipcode %>
   <%= form.text_field :zipcode %>
-<div>
+</div>
+<div class="form-block">
   <%= form.label :email_address %>
   <%= form.text_field :email_address %>
 </div>
-<div>
+<div class="form-block">
   <%= form.submit "Continue to Payment" %>
 </div>
 <% end %>
