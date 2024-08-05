@@ -27,13 +27,15 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
+    @order.update(order_params)
     if @order.client_secret == nil
       payment_intent = Stripe::PaymentIntent.create(
         amount: 100,
         currency: 'usd')
       @order.client_secret = payment_intent.client_secret
       cookies[:client_secret] = @order.client_secret
-      end
+    end
+    
     render "orders/payment"
   end
 

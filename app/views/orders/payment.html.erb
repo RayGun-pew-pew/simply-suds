@@ -1,11 +1,41 @@
 <%= javascript_pack_tag "checkout" %>
-    <form id="payment_form">
-      <div id="payment_element">
-        <!--Stripe.js injects the Payment Element-->
-      </div>
-      <button id="submit">
-        <div class="spinner hidden" id="spinner"></div>
-        <span id="button-text">Pay now</span>
-      </button>
-      <div id="payment-message" class="hidden"></div>
-    </form>
+
+<section>
+  <% Current.order.line_items.each do |line_item| %>
+  <div>
+    <%= line_item.product.name %>
+    <%= (line_item.product.price * line_item.quantity) / 100.0 %>
+  </div>
+  <% end %>
+  <span>Sub Total: $$$</span>
+  <span>Shipping: $$$</span>
+  <span>Total: $$$</span>
+</section>
+<section>
+  <div class="form-block">
+    <div>
+      <%= Current.order.first_name %> <%= Current.order.last_name %>
+    </div>
+    <%= Current.order.email_address %>
+  </div>
+  <div class="form-block">
+    <%= Current.order.address_line_1 %> <%= Current.order.address_line_2 %>
+  </div>
+  <div class="form-block">
+    <%= Current.order.city %>, <%= Current.order.state %>
+  </div>
+  <div class="form-block">
+    <%= Current.order.zipcode %>
+  </div>
+</section>
+<form id="payment_form">
+  <div id="payment_element">
+    <!--Stripe.js injects the Payment Element-->
+  </div>
+  <button id="submit">
+    <div class="spinner hidden" id="spinner"></div>
+    <span id="button-text">Pay now</span>
+  </button>
+  <div id="payment-message" class="hidden"></div>
+  <h4>Payments Powered By Stripe</h4>
+</form>
