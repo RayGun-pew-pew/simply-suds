@@ -9,8 +9,4 @@ class MainController < ApplicationController
 
   def about
   end
-
-  def cart
-    
-  end
 end

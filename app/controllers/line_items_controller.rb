@@ -49,7 +49,7 @@ class LineItemsController < ApplicationController
                 amount: Current.order.products.pluck(:price).sum
               )
             end
-        format.html { redirect_to order_url(Current.order.id), notice: "Line item was successfully created." }
+        format.html { redirect_to shop_url, notice: "Line item was successfully created." }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new, status: :unprocessable_entity }
