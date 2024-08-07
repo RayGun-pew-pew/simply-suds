@@ -1,0 +1,14 @@
+<h1>Thank You</h1>
+
+<span>
+  Here is a review of your order.
+</span>
+
+<% Current.order.line_items.each() do |line_item| %>
+<%= line_item.product.name %> x <%= line_item.quantity %> $<%= (line_item.product.price * line_item.quantity) / 100.0 %>
+<% end %>
+<span>
+  Sub Total: <%= Current.order.sub_total / 100.0 %>
+</span>
+<span>Shipping: $10.00 </span>
+<span>Total: <%= Current.order.sub_total / 100.0 + 10.00 %> </span>

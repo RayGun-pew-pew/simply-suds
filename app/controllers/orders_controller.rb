@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[ show edit update destroy checkout ]
+  before_action :set_order, only: %i[ show edit update destroy checkout success ]
   Stripe.api_key = 'sk_test_51PR2wqK5wu4lBGD1J8Km9Wklgkm8qGVHD1gc21tv8q1K5ursbin5dlpVzimFuLsNWAr938lmkaKLVwcimgq3tvFZ00r4BkTfp1'
   
   # GET /orders or /orders.json
@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
       @order.client_secret = payment_intent.client_secret
       cookies[:client_secret] = @order.client_secret
     end
-    
+    Current.order = @order
     render "orders/payment"
   end
 
@@ -49,13 +49,14 @@ class OrdersController < ApplicationController
     end
   end
 
-  def checkout
+  def success
+    render "orders/success", notice: "Thank You. Your Order has been placed."
   end
   
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_order
-    @order = Order.find_by(id: params[:id])
+    @order = Order.find_by(id: Current.order.id)
   end
 
     # Only allow a list of trusted parameters through.
@@ -66,6 +67,6 @@ class OrdersController < ApplicationController
                                     :address_line_1,
                                     :address_line_2,
                                     :city, :state,
-                                    :zipcode)
+                                    :zipcode, :email_address)
     end
 end

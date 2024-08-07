@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/shop', to: "main#shop"
   get '/about', to: "main#about"
+  get '/success', to: "orders#success"
   
   root "main#index"
 end

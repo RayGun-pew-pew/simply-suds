@@ -27,12 +27,16 @@ async function handleSubmit(event) {
     event.preventDefault();
     setLoading(true)
 
+    console.log("attempting payment")
+    
     const {error} = await stripe.confirmPayment({
 	elements,
 	confirmParams: {
-	    return_url: "http://localhost:3000/",
+	    return_url: "http://localhost:3000/success",
 	},
     });
+
+    console.log("payment successful")
 
     if (error.type === "card_error" || error.type === "validation_error") {
 	showMessage(error.message);
