@@ -1,8 +1,7 @@
 <header>
             <div class='header-container branding-container' id='branding-container-logo'>
-                <a href="/">
-                    <img src="transparent-logo.svg" alt="simply suds and more logo" 
-                        height="200px" width="200px"/>
+              <a href="/">
+		<%= image_tag "transparent-logo.svg" %>
                 </a>
             </div>
             <div class='header-container branding-container' id="branding-container-name">
@@ -27,5 +26,5 @@
                   </a>
                 </div>
             </nav>
-	    <%= link_to "view cart", order_path(Current.order.id) %>
+	    <%= link_to image_tag("cart.svg"), order_path(Current.order.id) %>
         </header>

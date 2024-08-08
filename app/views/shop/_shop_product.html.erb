@@ -16,6 +16,6 @@
 <%= form_with model: LineItem.create do |form| %>
 <%= form.hidden_field :product_id, value: @product.id %>
 <%= form.number_field :quantity, in: 1...100 %>
-<%= form.submit "Add to cart" %>
+<%= image_submit_tag "add-item.svg" %>
 <% end %>    
 </div>
